@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Northstar Pulse - BillionToOne PM Pitch</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            color: #022633;
+        }
+
+        @page {
+            size: 1100px 700px;
+            margin: 0;
+        }
+
+        .print-instructions {
+            background: #1cace9;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-size: 14px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .slide {
+            width: 1100px;
+            height: 700px;
+            padding: 60px 80px;
+            page-break-after: always;
+            page-break-inside: avoid;
+            margin: 60px auto 40px auto;
+            overflow: hidden;
+            position: relative;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-radius: 4px;
+        }
+
+        .slide:first-of-type {
+            margin-top: 80px;
+        }
+
+        @media print {
+            .print-instructions {
+                display: none !important;
+            }
+            body {
+                background: white;
+            }
+            .slide {
+                margin: 0;
+                box-shadow: none;
+                border-radius: 0;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 42px;
+            color: #022633;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 28px;
+            color: #022633;
+            margin-bottom: 24px;
+        }
+
+        h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            color: #022633;
+            margin-bottom: 10px;
+        }
+
+        p, li {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .accent {
+            color: #1cace9;
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(28, 172, 233, 0.1);
+            color: #1cace9;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        /* ===== SLIDE 1: TITLE ===== */
+        .slide-title {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #022633 0%, #0a3d52 100%);
+            color: white;
+        }
+
+        .slide-title h1 {
+            color: white;
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+
+        .slide-title .subtitle {
+            font-size: 22px;
+            color: #1cace9;
+            font-weight: 400;
+            margin-bottom: 40px;
+        }
+
+        .slide-title .meta {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 20px;
+        }
+
+        .slide-title .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            color: rgba(255,255,255,0.4);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            position: absolute;
+            bottom: 40px;
+        }
+
+        /* ===== SLIDE 2: PROBLEM ===== */
+        .three-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .col-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 28px 24px;
+            border: 1px solid #e8ecf0;
+            position: relative;
+        }
+
+        .col-card.highlight {
+            background: linear-gradient(135deg, rgba(28,172,233,0.08), rgba(28,172,233,0.03));
+            border: 2px solid #1cace9;
+        }
+
+        .col-card h3 {
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        .col-card p {
+            font-size: 13px;
+            color: #555;
+        }
+
+        .col-card .icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .col-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .col-card ul li {
+            font-size: 13px;
+            padding: 4px 0;
+            padding-left: 16px;
+            position: relative;
+            color: #555;
+        }
+
+        .col-card ul li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #1cace9;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 10px;
+        }
+
+        .problem-statement {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 14px 20px;
+            margin-top: 20px;
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+            color: #5d4037;
+        }
+
+        /* ===== SLIDE 3: SOLUTION ===== */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 20px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 14px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-bullet {
+            width: 8px;
+            height: 8px;
+            min-width: 8px;
+            background: #1cace9;
+            border-radius: 2px;
+            margin-top: 6px;
+        }
+
+        .competitive-box {
+            background: linear-gradient(135deg, #022633, #0a3d52);
+            color: white;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-top: 16px;
+        }
+
+        .competitive-box h3 {
+            color: #1cace9;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .competitive-box p {
+            color: rgba(255,255,255,0.85);
+            font-size: 13px;
+        }
+
+        /* ===== SLIDE 4: ARCHITECTURE ===== */
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 20px 0;
+        }
+
+        .flow-box {
+            background: #f8fafc;
+            border: 1px solid #e0e5ea;
+            border-radius: 10px;
+            padding: 14px 16px;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .flow-box .flow-label {
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .flow-box .flow-value {
+            font-size: 13px;
+            font-weight: 600;
+            color: #022633;
+        }
+
+        .flow-box.primary {
+            background: linear-gradient(135deg, rgba(28,172,233,0.1), rgba(28,172,233,0.05));
+            border-color: #1cace9;
+        }
+
+        .flow-arrow {
+            color: #1cace9;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .tradeoffs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .tradeoff-card {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 16px;
+            border: 1px solid #e8ecf0;
+        }
+
+        .tradeoff-card h4 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #888;
+            margin-bottom: 6px;
+        }
+
+        .tradeoff-card .concern {
+            font-size: 13px;
+            font-weight: 600;
+            color: #022633;
+            margin-bottom: 4px;
+        }
+
+        .tradeoff-card .mitigation {
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* ===== SLIDE 5: METRICS ===== */
+        .metric-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .metric-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid #e8ecf0;
+            text-align: center;
+        }
+
+        .metric-card .metric-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(28,172,233,0.1);
+            border-radius: 50%;
+            margin: 0 auto 14px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .metric-card .metric-name {
+            font-weight: 600;
+            font-size: 16px;
+            color: #022633;
+            margin-bottom: 8px;
+        }
+
+        .metric-card .metric-desc {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .metric-card .metric-method {
+            font-size: 11px;
+            color: #999;
+            background: #f0f2f4;
+            padding: 6px 10px;
+            border-radius: 6px;
+        }
+
+        .methodology-box {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px 24px;
+            border: 1px solid #e8ecf0;
+            margin-top: 20px;
+        }
+
+        .methodology-box h3 {
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .methodology-box p {
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* ===== SLIDE 6: ROADMAP ===== */
+        .roadmap {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        .phase {
+            position: relative;
+            padding: 24px 20px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid #e8ecf0;
+        }
+
+        .phase::after {
+            content: '';
+            position: absolute;
+            right: -14px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-left: 8px solid #1cace9;
+        }
+
+        .phase:last-child::after {
+            display: none;
+        }
+
+        .phase-num {
+            font-size: 11px;
+            font-weight: 700;
+            color: #1cace9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .phase h3 {
+            font-size: 15px;
+            margin-bottom: 6px;
+        }
+
+        .phase .timeline {
+            font-size: 11px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+
+        .phase ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .phase ul li {
+            font-size: 12px;
+            color: #555;
+            padding: 3px 0;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .phase ul li::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            background: #1cace9;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 9px;
+        }
+
+        .thank-you {
+            text-align: center;
+            margin-top: 28px;
+            font-size: 20px;
+            color: #022633;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<div class="print-instructions">
+    Press <strong>Cmd + P</strong> (Mac) or <strong>Ctrl + P</strong> (Windows) &rarr; Save as PDF &rarr; Set margins to <strong>"None"</strong> &rarr; Enable <strong>"Background graphics"</strong>
+</div>
+
+<!-- SLIDE 1: TITLE -->
+<div class="slide slide-title">
+    <div class="tag">Product Vision</div>
+    <h1>Northstar Pulse</h1>
+    <div class="subtitle">AI-Powered Longitudinal Monitoring for Oncologists</div>
+    <p style="font-size: 16px; color: rgba(255,255,255,0.7); max-width: 600px; line-height: 1.6;">
+        Turning serial liquid biopsy data into predictive treatment intelligence
+    </p>
+    <div class="meta">
+        Product Management Intern &mdash; Oncology Portfolio<br>
+        BillionToOne &bull; 2026
+    </div>
+    <div class="logo-text">BillionToOne</div>
+</div>
+
+<!-- SLIDE 2: THE PROBLEM -->
+<div class="slide">
+    <div class="tag">The Gap</div>
+    <h2>World-Class Sensitivity, Disconnected Insights</h2>
+    <div class="three-col">
+        <div class="col-card">
+            <div class="icon" style="color: #1cace9;">&#9679;</div>
+            <h3>Northstar Select</h3>
+            <p style="font-weight:600; color:#022633; margin-bottom:8px;">Snapshot Genomics</p>
+            <ul>
+                <li>0.15% VAF sensitivity (best-in-class)</li>
+                <li>51% more actionable SNVs detected</li>
+                <li>Point-in-time profiling</li>
+            </ul>
+        </div>
+        <div class="col-card highlight">
+            <div class="icon" style="color: #1cace9;">&#9733;</div>
+            <h3>Northstar Pulse</h3>
+            <p style="font-weight:600; color:#1cace9; margin-bottom:8px;">Longitudinal Intelligence</p>
+            <ul>
+                <li>Connect serial test results over time</li>
+                <li>Predict treatment response trajectory</li>
+                <li>Surface actionable alerts proactively</li>
+            </ul>
+        </div>
+        <div class="col-card">
+            <div class="icon" style="color: #1cace9;">&#9679;</div>
+            <h3>Northstar Response</h3>
+            <p style="font-weight:600; color:#022633; margin-bottom:8px;">Monitoring Signals</p>
+            <ul>
+                <li>Methylation-based ctDNA quantification</li>
+                <li>Treatment response tracking</li>
+                <li>Absolute ctDNA burden measurement</li>
+            </ul>
+        </div>
+    </div>
+    <div class="problem-statement">
+        <strong>The gap:</strong> Oncologists receive individual test reports but must manually correlate results across visits. No unified view connects Select's genomic profile with Response's monitoring data over time.
+    </div>
+</div>
+
+<!-- SLIDE 3: THE SOLUTION -->
+<div class="slide">
+    <div class="tag">The Solution</div>
+    <h2>From Reports to Real-Time Treatment Intelligence</h2>
+    <div class="two-col">
+        <div>
+            <h3>What Northstar Pulse Does</h3>
+            <ul class="feature-list">
+                <li><span class="feature-bullet"></span><span><strong>Longitudinal dashboard</strong> &mdash; Unified timeline of all Northstar results per patient, showing ctDNA burden trends alongside genomic changes</span></li>
+                <li><span class="feature-bullet"></span><span><strong>Trajectory prediction</strong> &mdash; ML models trained on treatment-response patterns flag early signs of resistance or response</span></li>
+                <li><span class="feature-bullet"></span><span><strong>Smart alerts</strong> &mdash; Proactive notifications when ctDNA levels deviate from expected trajectory post-therapy</span></li>
+                <li><span class="feature-bullet"></span><span><strong>Cohort benchmarking</strong> &mdash; Compare a patient's trajectory to de-identified outcomes from similar molecular profiles</span></li>
+            </ul>
+        </div>
+        <div>
+            <h3>Why Now</h3>
+            <ul class="feature-list">
+                <li><span class="feature-bullet"></span><span><strong>Data moat</strong> &mdash; BillionToOne's QCT technology + growing install base creates proprietary longitudinal dataset no competitor can replicate</span></li>
+                <li><span class="feature-bullet"></span><span><strong>Platform expansion</strong> &mdash; PGx and CH add-ons create richer multi-modal data per patient</span></li>
+                <li><span class="feature-bullet"></span><span><strong>Market timing</strong> &mdash; AI-enhanced liquid biopsy is the #1 trend in precision oncology (U.S. market: $2.78B in 2026, 13.8% CAGR)</span></li>
+            </ul>
+            <div class="competitive-box">
+                <h3>Competitive Pressure</h3>
+                <p>Guardant, Foundation Medicine, and Tempus are all building longitudinal analytics layers. If BillionToOne doesn't own this, superior sensitivity alone won't sustain differentiation.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 4: ARCHITECTURE -->
+<div class="slide">
+    <div class="tag">Architecture</div>
+    <h2>System Design</h2>
+    <div class="flow-diagram">
+        <div class="flow-box">
+            <div class="flow-label">Input</div>
+            <div class="flow-value">Northstar Select<br>+ Response Reports</div>
+        </div>
+        <span class="flow-arrow">&rarr;</span>
+        <div class="flow-box">
+            <div class="flow-label">Processing</div>
+            <div class="flow-value">Data Pipeline<br>&amp; Normalization</div>
+        </div>
+        <span class="flow-arrow">&rarr;</span>
+        <div class="flow-box primary">
+            <div class="flow-label">Intelligence</div>
+            <div class="flow-value">Trajectory ML<br>&amp; Alert Engine</div>
+        </div>
+        <span class="flow-arrow">&rarr;</span>
+        <div class="flow-box">
+            <div class="flow-label">Output</div>
+            <div class="flow-value">Oncologist<br>Dashboard</div>
+        </div>
+        <span class="flow-arrow">&rarr;</span>
+        <div class="flow-box">
+            <div class="flow-label">Integration</div>
+            <div class="flow-value">EMR / Portal<br>Delivery</div>
+        </div>
+    </div>
+
+    <div class="tradeoffs-grid">
+        <div class="tradeoff-card">
+            <h4>Latency</h4>
+            <div class="concern">Dashboard refresh &lt;2s</div>
+            <div class="mitigation">Pre-computed trajectories updated on each new result; real-time only for alerts</div>
+        </div>
+        <div class="tradeoff-card">
+            <h4>Cost</h4>
+            <div class="concern">No additional test cost</div>
+            <div class="mitigation">Software layer on existing data; marginal compute cost per patient is minimal</div>
+        </div>
+        <div class="tradeoff-card">
+            <h4>Privacy</h4>
+            <div class="concern">HIPAA + SOC 2 compliant</div>
+            <div class="mitigation">Patient data stays within BillionToOne's existing secure infrastructure; cohort data is de-identified</div>
+        </div>
+        <div class="tradeoff-card">
+            <h4>Failure Handling</h4>
+            <div class="concern">Graceful degradation</div>
+            <div class="mitigation">If ML predictions unavailable, dashboard shows raw trend data; alerts require confidence threshold</div>
+        </div>
+    </div>
+
+    <div style="margin-top: 16px; background: #f8fafc; border-radius: 10px; padding: 14px 20px; border: 1px solid #e8ecf0;">
+        <h3 style="font-size: 14px; margin-bottom: 6px;">Technical Advantage</h3>
+        <p style="font-size: 13px; color: #666;">QCT's absolute quantification (unlike relative measures from competitors) enables calibrated cross-timepoint comparisons &mdash; the foundation for reliable trajectory modeling.</p>
+    </div>
+</div>
+
+<!-- SLIDE 5: METRICS -->
+<div class="slide">
+    <div class="tag">Success Metrics</div>
+    <h2>How We Measure Impact</h2>
+    <div class="metric-cards">
+        <div class="metric-card">
+            <div class="metric-icon">&#128200;</div>
+            <div class="metric-name">Adoption</div>
+            <div class="metric-desc">% of ordering oncologists who access Pulse dashboard within 48h of receiving a result</div>
+            <div class="metric-method">Measured via portal analytics; baseline from current report open rates</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-icon">&#9889;</div>
+            <div class="metric-name">Clinical Utility</div>
+            <div class="metric-desc">Rate of treatment modifications correlated with Pulse alerts vs. standard report delivery</div>
+            <div class="metric-method">Retrospective chart review in partner clinics; requires IRB approval</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-icon">&#128257;</div>
+            <div class="metric-name">Retention</div>
+            <div class="metric-desc">Serial test re-order rate: do oncologists order follow-up Northstar tests more frequently with Pulse?</div>
+            <div class="metric-method">A/B comparison: Pulse users vs. non-Pulse matched cohort over 6 months</div>
+        </div>
+    </div>
+    <div class="methodology-box">
+        <h3>Why These Metrics</h3>
+        <p>Adoption confirms product-market fit. Clinical utility validates that insights change behavior (not just engagement). Retention is the revenue proxy &mdash; if Pulse drives repeat testing, it directly grows Northstar ARR without new customer acquisition cost.</p>
+    </div>
+</div>
+
+<!-- SLIDE 6: ROADMAP -->
+<div class="slide">
+    <div class="tag">Path Forward</div>
+    <h2>Conservative, Data-Driven Rollout</h2>
+    <div class="roadmap">
+        <div class="phase">
+            <div class="phase-num">Phase 1</div>
+            <h3>Prototype</h3>
+            <div class="timeline">Weeks 1&ndash;4</div>
+            <ul>
+                <li>Build longitudinal dashboard with retrospective patient data</li>
+                <li>Validate data pipeline with engineering</li>
+                <li>Design review with 3&ndash;5 oncologists</li>
+            </ul>
+        </div>
+        <div class="phase">
+            <div class="phase-num">Phase 2</div>
+            <h3>Closed Beta</h3>
+            <div class="timeline">Weeks 5&ndash;8</div>
+            <ul>
+                <li>Deploy to 5 high-volume partner clinics</li>
+                <li>Integrate basic ML trajectory models</li>
+                <li>Collect structured feedback via in-app surveys</li>
+            </ul>
+        </div>
+        <div class="phase">
+            <div class="phase-num">Phase 3</div>
+            <h3>Measure</h3>
+            <div class="timeline">Weeks 9&ndash;12</div>
+            <ul>
+                <li>Analyze adoption, utility, and retention metrics</li>
+                <li>Iterate on alert thresholds based on clinician feedback</li>
+                <li>Go/no-go decision for broader rollout</li>
+            </ul>
+        </div>
+        <div class="phase">
+            <div class="phase-num">Phase 4</div>
+            <h3>Scale</h3>
+            <div class="timeline">If metrics support</div>
+            <ul>
+                <li>Expand to all ordering oncologists</li>
+                <li>EMR integration (Epic, Cerner)</li>
+                <li>Explore premium tier pricing model</li>
+            </ul>
+        </div>
+    </div>
+    <div class="thank-you">Thank you.</div>
+</div>
+
+</body>
+</html>
