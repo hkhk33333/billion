@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark Zones - Phygtl PM Pitch</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Quattrocento:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            color: #282A39;
+        }
+
+        @page {
+            size: 1100px 700px;
+            margin: 0;
+        }
+
+        .print-instructions {
+            background: #8200c4;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-size: 14px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .slide {
+            width: 1100px;
+            height: 700px;
+            padding: 60px 80px;
+            page-break-after: always;
+            page-break-inside: avoid;
+            margin: 60px auto 40px auto;
+            overflow: hidden;
+            position: relative;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-radius: 4px;
+        }
+
+        .slide:first-of-type {
+            margin-top: 80px;
+        }
+
+        @media print {
+            .print-instructions {
+                display: none !important;
+            }
+            body {
+                background: white;
+            }
+            .slide {
+                margin: 0;
+                box-shadow: none;
+                border-radius: 0;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 44px;
+            color: #282A39;
+            line-height: 1.15;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            font-size: 28px;
+            color: #282A39;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        h3 {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            font-size: 17px;
+            color: #282A39;
+            margin-bottom: 10px;
+        }
+
+        p, li {
+            font-family: 'Quattrocento', serif;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .accent {
+            color: #8200c4;
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(130, 0, 196, 0.08);
+            color: #8200c4;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 14px;
+            border-radius: 20px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* ===== SLIDE 1: TITLE ===== */
+        .slide-title {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #282A39 0%, #3a1f54 50%, #8200c4 100%);
+            color: white;
+        }
+
+        .slide-title h1 {
+            color: white;
+            font-size: 52px;
+            margin-bottom: 10px;
+        }
+
+        .slide-title .subtitle {
+            font-family: 'Quattrocento', serif;
+            font-size: 20px;
+            color: #E1C9A0;
+            font-weight: 400;
+            margin-bottom: 36px;
+            max-width: 600px;
+        }
+
+        .slide-title .meta {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 20px;
+        }
+
+        .slide-title .logo-text {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            position: absolute;
+            bottom: 40px;
+        }
+
+        /* ===== SLIDE 2: PROBLEM ===== */
+        .three-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+            margin-top: 16px;
+        }
+
+        .col-card {
+            background: #faf8f6;
+            border-radius: 14px;
+            padding: 26px 22px;
+            border: 1px solid #ede8e2;
+            position: relative;
+        }
+
+        .col-card.highlight {
+            background: linear-gradient(135deg, rgba(130,0,196,0.06), rgba(130,0,196,0.02));
+            border: 2px solid #8200c4;
+        }
+
+        .col-card h3 {
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .col-card p {
+            font-size: 13px;
+        }
+
+        .col-card .stat {
+            font-family: 'Oswald', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #8200c4;
+            margin-bottom: 6px;
+        }
+
+        .col-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .col-card ul li {
+            font-size: 13px;
+            padding: 3px 0;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .col-card ul li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #8200c4;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 10px;
+        }
+
+        .problem-statement {
+            background: rgba(130, 0, 196, 0.05);
+            border-left: 4px solid #8200c4;
+            padding: 14px 20px;
+            margin-top: 16px;
+            border-radius: 0 10px 10px 0;
+            font-size: 14px;
+            color: #3a1f54;
+        }
+
+        /* ===== SLIDE 3: SOLUTION ===== */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 16px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0ece8;
+            font-size: 14px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-bullet {
+            width: 8px;
+            height: 8px;
+            min-width: 8px;
+            background: #8200c4;
+            border-radius: 2px;
+            margin-top: 6px;
+        }
+
+        .competitive-box {
+            background: linear-gradient(135deg, #282A39, #3a1f54);
+            color: white;
+            border-radius: 14px;
+            padding: 18px 22px;
+            margin-top: 14px;
+        }
+
+        .competitive-box h3 {
+            color: #E1C9A0;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .competitive-box p {
+            color: rgba(255,255,255,0.85);
+            font-size: 13px;
+        }
+
+        /* ===== SLIDE 4: ARCHITECTURE ===== */
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin: 18px 0;
+        }
+
+        .flow-box {
+            background: #faf8f6;
+            border: 1px solid #ede8e2;
+            border-radius: 10px;
+            padding: 14px 14px;
+            text-align: center;
+            min-width: 110px;
+        }
+
+        .flow-box .flow-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .flow-box .flow-value {
+            font-family: 'Oswald', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            color: #282A39;
+        }
+
+        .flow-box.primary {
+            background: linear-gradient(135deg, rgba(130,0,196,0.08), rgba(130,0,196,0.03));
+            border-color: #8200c4;
+        }
+
+        .flow-arrow {
+            color: #8200c4;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .tradeoffs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 16px;
+            margin-top: 14px;
+        }
+
+        .tradeoff-card {
+            background: #faf8f6;
+            border-radius: 10px;
+            padding: 16px;
+            border: 1px solid #ede8e2;
+        }
+
+        .tradeoff-card h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #999;
+            margin-bottom: 6px;
+        }
+
+        .tradeoff-card .concern {
+            font-family: 'Oswald', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: #282A39;
+            margin-bottom: 4px;
+        }
+
+        .tradeoff-card .mitigation {
+            font-family: 'Quattrocento', serif;
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* ===== SLIDE 5: METRICS ===== */
+        .metric-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+            margin-top: 18px;
+        }
+
+        .metric-card {
+            background: #faf8f6;
+            border-radius: 14px;
+            padding: 24px;
+            border: 1px solid #ede8e2;
+            text-align: center;
+        }
+
+        .metric-card .metric-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(130, 0, 196, 0.08);
+            border-radius: 50%;
+            margin: 0 auto 14px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .metric-card .metric-name {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            font-size: 17px;
+            color: #282A39;
+            margin-bottom: 8px;
+        }
+
+        .metric-card .metric-desc {
+            font-family: 'Quattrocento', serif;
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .metric-card .metric-method {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            color: #999;
+            background: #f0ece8;
+            padding: 6px 10px;
+            border-radius: 6px;
+        }
+
+        .methodology-box {
+            background: #faf8f6;
+            border-radius: 14px;
+            padding: 18px 24px;
+            border: 1px solid #ede8e2;
+            margin-top: 18px;
+        }
+
+        .methodology-box h3 {
+            font-size: 15px;
+            margin-bottom: 6px;
+        }
+
+        .methodology-box p {
+            font-size: 13px;
+        }
+
+        /* ===== SLIDE 6: ROADMAP ===== */
+        .roadmap {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 18px;
+            margin-top: 22px;
+        }
+
+        .phase {
+            position: relative;
+            padding: 22px 18px;
+            background: #faf8f6;
+            border-radius: 14px;
+            border: 1px solid #ede8e2;
+        }
+
+        .phase::after {
+            content: '';
+            position: absolute;
+            right: -13px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-left: 8px solid #8200c4;
+        }
+
+        .phase:last-child::after {
+            display: none;
+        }
+
+        .phase-num {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            color: #8200c4;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .phase h3 {
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .phase .timeline {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+
+        .phase ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .phase ul li {
+            font-size: 12px;
+            padding: 3px 0;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .phase ul li::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            background: #8200c4;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 9px;
+        }
+
+        .thank-you {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 22px;
+            color: #282A39;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="print-instructions">
+    Press <strong>Cmd + P</strong> (Mac) or <strong>Ctrl + P</strong> (Windows) &rarr; Save as PDF &rarr; Set margins to <strong>"None"</strong> &rarr; Enable <strong>"Background graphics"</strong>
+</div>
+
+<!-- SLIDE 1: TITLE -->
+<div class="slide slide-title">
+    <div class="tag">Product Vision</div>
+    <h1>Spark Zones</h1>
+    <div class="subtitle">AI-powered AR connection hotspots that turn passive campus proximity into active friendships</div>
+    <p style="font-family: 'Inter', sans-serif; font-size: 14px; color: rgba(255,255,255,0.5); max-width: 500px; line-height: 1.6; margin-top: 8px;">
+        Bridging the gap between being near someone and knowing someone
+    </p>
+    <div class="meta">
+        Product Management Intern &mdash; Summer 2026<br>
+        Phygtl, Inc.
+    </div>
+    <div class="logo-text">Phygtl</div>
+</div>
+
+<!-- SLIDE 2: THE PROBLEM -->
+<div class="slide">
+    <div class="tag">The Problem</div>
+    <h2>Proximity Without Connection</h2>
+    <div class="three-col">
+        <div class="col-card">
+            <div class="stat">60%</div>
+            <h3>Students Socially Isolated</h3>
+            <p>Over 60% of today's students report feeling socially isolated, driving rising depression and anxiety rates on campus.</p>
+        </div>
+        <div class="col-card">
+            <div class="stat">50.6%</div>
+            <h3>Tech Makes It Worse</h3>
+            <p>Half of students say technology use contributes to isolation. Current social apps optimize for screen time, not real-world connection.</p>
+        </div>
+        <div class="col-card">
+            <div class="stat">48.1%</div>
+            <h3>Friendship Is Harder</h3>
+            <p>Nearly half say making friends would be easier without ubiquitous technology. Digital tools replaced, rather than enabled, physical interaction.</p>
+        </div>
+    </div>
+    <div class="problem-statement">
+        <strong>The paradox:</strong> Students sit next to each other in libraries, dining halls, and quads every day &mdash; but have no low-friction way to discover shared interests with the person beside them. Phygtl's AR platform is the perfect bridge, but currently lacks a <strong>context-aware trigger</strong> for real-world connection.
+    </div>
+</div>
+
+<!-- SLIDE 3: THE SOLUTION -->
+<div class="slide">
+    <div class="tag">The Solution</div>
+    <h2>Spark Zones: Context-Aware Connection</h2>
+    <div class="two-col">
+        <div>
+            <h3>How It Works</h3>
+            <ul class="feature-list">
+                <li><span class="feature-bullet"></span><span><strong>AR hotspot detection</strong> &mdash; When 3+ Phygtl users are co-located in a campus space, a "Spark Zone" activates in-app with an AR overlay on the physical space</span></li>
+                <li><span class="feature-bullet"></span><span><strong>Interest matching</strong> &mdash; AI surfaces shared interests, classes, or clubs between nearby users and generates contextual icebreaker prompts</span></li>
+                <li><span class="feature-bullet"></span><span><strong>Collaborative AR drops</strong> &mdash; Users in a Spark Zone can co-create AR content (stickers, messages) anchored to that location for future visitors</span></li>
+                <li><span class="feature-bullet"></span><span><strong>Streak & reward loops</strong> &mdash; Tokenized rewards for real-world meetups; streaks for connecting with new people weekly</span></li>
+            </ul>
+        </div>
+        <div>
+            <h3>Why This Fits Phygtl</h3>
+            <ul class="feature-list">
+                <li><span class="feature-bullet"></span><span><strong>Platform-native</strong> &mdash; Built on Phygtl's existing AR + Web3 stack; extends UGC and token systems already in production</span></li>
+                <li><span class="feature-bullet"></span><span><strong>Mission-aligned</strong> &mdash; Directly targets the 40% isolation reduction goal by converting digital engagement into face-to-face interaction</span></li>
+                <li><span class="feature-bullet"></span><span><strong>Gaming DNA</strong> &mdash; Team from Niantic, Riot, and Zynga brings proven expertise in location-based social mechanics</span></li>
+            </ul>
+            <div class="competitive-box">
+                <h3>Competitive Moat</h3>
+                <p>BeReal and Locket tried proximity, but lack AR and campus context. Niantic has AR but not campus focus. Phygtl uniquely combines AR, Web3 rewards, and a student-first mission &mdash; Spark Zones make this concrete.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 4: ARCHITECTURE -->
+<div class="slide">
+    <div class="tag">Architecture</div>
+    <h2>System Design</h2>
+    <div class="flow-diagram">
+        <div class="flow-box">
+            <div class="flow-label">Sensing</div>
+            <div class="flow-value">BLE + GPS<br>Co-location</div>
+        </div>
+        <span class="flow-arrow">&rarr;</span>
+        <div class="flow-box">
+            <div class="flow-label">Matching</div>
+            <div class="flow-value">Interest Graph<br>+ LLM Prompts</div>
+        </div>
+        <span class="flow-arrow">&rarr;</span>
+        <div class="flow-box primary">
+            <div class="flow-label">Experience</div>
+            <div class="flow-value">AR Spark Zone<br>Activation</div>
+        </div>
+        <span class="flow-arrow">&rarr;</span>
+        <div class="flow-box">
+            <div class="flow-label">Interaction</div>
+            <div class="flow-value">Icebreakers &<br>Co-Created AR</div>
+        </div>
+        <span class="flow-arrow">&rarr;</span>
+        <div class="flow-box">
+            <div class="flow-label">Retention</div>
+            <div class="flow-value">Token Rewards<br>& Streaks</div>
+        </div>
+    </div>
+
+    <div class="tradeoffs-grid">
+        <div class="tradeoff-card">
+            <h4>Battery</h4>
+            <div class="concern">Background BLE drain</div>
+            <div class="mitigation">Geofenced activation only in campus zones; BLE scanning at low-power intervals (every 30s)</div>
+        </div>
+        <div class="tradeoff-card">
+            <h4>Privacy</h4>
+            <div class="concern">Location sharing anxiety</div>
+            <div class="mitigation">Opt-in only; fuzzy zones (building-level, not exact); no persistent location history; visible toggle</div>
+        </div>
+        <div class="tradeoff-card">
+            <h4>Cold Start</h4>
+            <div class="concern">Need critical mass</div>
+            <div class="mitigation">Launch campus-by-campus with student org partnerships; pre-seed Spark Zones at high-traffic spaces</div>
+        </div>
+        <div class="tradeoff-card">
+            <h4>Safety</h4>
+            <div class="concern">Unwanted contact</div>
+            <div class="mitigation">Block/report system; interests shown but not identity until mutual opt-in; no DMs without match</div>
+        </div>
+    </div>
+
+    <div style="margin-top: 14px; background: #faf8f6; border-radius: 10px; padding: 14px 20px; border: 1px solid #ede8e2;">
+        <h3 style="font-size: 14px; margin-bottom: 4px;">Engineering Advantage</h3>
+        <p style="font-size: 13px; color: #666; font-family: 'Quattrocento', serif;">Phygtl's existing AR rendering engine + Web3 token infrastructure means Spark Zones require a new matching service and notification layer, not a platform rewrite. Estimated 60% code reuse from existing UGC flow.</p>
+    </div>
+</div>
+
+<!-- SLIDE 5: METRICS -->
+<div class="slide">
+    <div class="tag">Success Metrics</div>
+    <h2>How We Measure Impact</h2>
+    <div class="metric-cards">
+        <div class="metric-card">
+            <div class="metric-icon">&#9889;</div>
+            <div class="metric-name">Activation Rate</div>
+            <div class="metric-desc">% of users in a Spark Zone who tap to reveal shared interests and engage with an icebreaker</div>
+            <div class="metric-method">In-app event tracking; target: engagement with at least 1 icebreaker per Spark Zone visit</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-icon">&#129309;</div>
+            <div class="metric-name">Real-World Meetups</div>
+            <div class="metric-desc">Number of confirmed face-to-face connections initiated through Spark Zones per week per campus</div>
+            <div class="metric-method">Self-reported via post-interaction survey + mutual "we met" confirmation button</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-icon">&#128200;</div>
+            <div class="metric-name">Isolation Reduction</div>
+            <div class="metric-desc">Change in UCLA Loneliness Scale scores for active Spark Zone users vs. control group over one semester</div>
+            <div class="metric-method">Pre/post validated survey instrument; IRB-approved study with partner university</div>
+        </div>
+    </div>
+    <div class="methodology-box">
+        <h3>Why These Metrics</h3>
+        <p>Activation measures product-market fit at the feature level. Real-world meetups validate the core thesis &mdash; that AR can bridge digital-to-physical connection. Isolation reduction ties directly to Phygtl's mission metric and provides publishable evidence for university partnerships and fundraising.</p>
+    </div>
+</div>
+
+<!-- SLIDE 6: ROADMAP -->
+<div class="slide">
+    <div class="tag">Path Forward</div>
+    <h2>Campus-by-Campus, Data-Driven</h2>
+    <div class="roadmap">
+        <div class="phase">
+            <div class="phase-num">Phase 1</div>
+            <h3>Discovery</h3>
+            <div class="timeline">Weeks 1&ndash;3</div>
+            <ul>
+                <li>Interview 20 students on connection barriers</li>
+                <li>Map high-traffic campus zones for seeding</li>
+                <li>Define interest taxonomy with student orgs</li>
+            </ul>
+        </div>
+        <div class="phase">
+            <div class="phase-num">Phase 2</div>
+            <h3>Prototype</h3>
+            <div class="timeline">Weeks 4&ndash;7</div>
+            <ul>
+                <li>Build matching service + notification layer</li>
+                <li>Integrate AR Spark Zone overlay</li>
+                <li>Closed alpha with 50 students at 1 campus</li>
+            </ul>
+        </div>
+        <div class="phase">
+            <div class="phase-num">Phase 3</div>
+            <h3>Measure</h3>
+            <div class="timeline">Weeks 8&ndash;10</div>
+            <ul>
+                <li>Track activation, meetups, and retention</li>
+                <li>Run loneliness scale pre/post survey</li>
+                <li>Go/no-go for multi-campus expansion</li>
+            </ul>
+        </div>
+        <div class="phase">
+            <div class="phase-num">Phase 4</div>
+            <h3>Scale</h3>
+            <div class="timeline">If metrics support</div>
+            <ul>
+                <li>Expand to 3&ndash;5 partner campuses</li>
+                <li>Add token reward loops and streaks</li>
+                <li>Publish impact study for university sales</li>
+            </ul>
+        </div>
+    </div>
+    <div class="thank-you">Thank You</div>
+</div>
+
+</body>
+</html>
